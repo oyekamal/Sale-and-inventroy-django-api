@@ -9,8 +9,10 @@ router.register('job', views.JobViewset)
 router.register('location', views.LocationViewset)
 router.register('user', views.UserViewset)
 router.register('employee', views.EmployeeViewset)
+router.register('signup', views.UserSigninViewset, basename='signup')
 
 urlpatterns = [
     path('',include(router.urls)),
-    path('login/',views.UserLoginApiView.as_view())
+    path('login/',views.UserLoginApiView.as_view()),
+    # path('signup/', views.UserSigninViewset.as_view()),
 ]
