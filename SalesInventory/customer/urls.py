@@ -10,6 +10,6 @@ router.register('emec', views.EmployeeManageCustomerEditViewset)
 
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
 ]
 

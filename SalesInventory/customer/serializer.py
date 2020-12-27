@@ -28,3 +28,5 @@ class EmployeeManageCustomerEditSerializer(serializers.ModelSerializer):
     class Meta:
         model=EmployeeManageCustomer
         fields=['employee','customer','description']
+        
+        
