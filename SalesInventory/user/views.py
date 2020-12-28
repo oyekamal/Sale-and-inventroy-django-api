@@ -11,25 +11,28 @@ class LocationViewset(viewsets.ModelViewSet):
     """handle location CRUD"""
     queryset=Location.objects.all()
     serializer_class=LocationSerializer 
-    
+    permission_classes=[IsAuthenticated,]
     
 class UserViewset(viewsets.ModelViewSet):
     """handle user CRUD"""
     queryset=User.objects.all()
     serializer_class=UserSerializer
+    permission_classes=[IsAuthenticated,]
 
 
 class EmployeeViewset(viewsets.ModelViewSet):
     """handle employee CRUD"""
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
+    permission_classes=[IsAuthenticated,]
 
 
 class UserSigninViewset(viewsets.ViewSet):
     """handle anyone can singup as a user"""
     permission_classes=[AllowAny,]
     def create(self, request):
-        
+        permission_classes=[IsAuthenticated,]
+    
         serializer=UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

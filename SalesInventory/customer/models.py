@@ -11,6 +11,6 @@ class Customer(models.Model):
     
     
 class EmployeeManageCustomer(models.Model):
-    employee=models.ForeignKey(Employee, on_delete=models.CASCADE)
-    customer=models.ForeignKey(Customer, on_delete=models.CASCADE)
+    employee=models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='employeeManageCustomer_employee_field')
+    customer=models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='employeeManageCustomer_customer_field')
     description=models.TextField()
