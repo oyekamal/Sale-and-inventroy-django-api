@@ -4,25 +4,30 @@ from django.contrib.auth.hashers import make_password
 
 
 class JobSerializer(serializers.ModelSerializer):
+    """job serializer for employee"""
     class Meta:
         model=Job
         fields='__all__'
         
 
 class LocationSerializer(serializers.ModelSerializer):
+    """ loaction is for all user, employee, supplier """
     class Meta:
         model=Location
         fields='__all__'
         
         
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Nested serializer of location for user. 
+    because user have one to one relationship with location.
+    when creating a user you are aloud to give location information too.
+    
+    """
     location=LocationSerializer()
     class Meta:
         model=User
         fields=['username','email','first_name','last_name','phone_no','password','location']
-        
-    
-    
         
         
     def create(self, validated_data):
@@ -58,6 +63,10 @@ class UserSerializer(serializers.ModelSerializer):
     
     
 class EmployeeSerializer(serializers.ModelSerializer):
+    """
+    handle nested serializer for user and job.
+    because they are one to one relationship with eachother
+    """
     user=UserSerializer()
     job=JobSerializer()
     class Meta:

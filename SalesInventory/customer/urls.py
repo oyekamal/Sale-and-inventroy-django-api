@@ -6,7 +6,7 @@ router =routers.DefaultRouter()
 
 router.register('customer', views.CustomerViewset)
 router.register('emc', views.EmployeeManageCustomerViewset)
-router.register('emec', views.EmployeeManageCustomerEditViewset)
+router.register('emce', views.EmployeeManageCustomerEditViewset)
 
 
 urlpatterns = [

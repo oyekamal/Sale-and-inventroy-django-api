@@ -7,7 +7,6 @@ class CustomerSerializer(serializers.ModelSerializer):
         model=Customer
         fields='__all__'
         
-        
 
 class EmployeeManageCustomerSerializer(serializers.ModelSerializer):
     employee =SerializerMethodField('get_employee_name',allow_null=True, required=False)
@@ -17,7 +16,7 @@ class EmployeeManageCustomerSerializer(serializers.ModelSerializer):
         return obj.customer.first_name
     
     def get_employee_name(self , obj):
-        return obj.employee.user.first_name
+        return obj.employee.user.username
     class Meta:
         model=EmployeeManageCustomer
         fields=['employee','customer','description']
@@ -28,5 +27,3 @@ class EmployeeManageCustomerEditSerializer(serializers.ModelSerializer):
     class Meta:
         model=EmployeeManageCustomer
         fields=['employee','customer','description']
-        
-        
