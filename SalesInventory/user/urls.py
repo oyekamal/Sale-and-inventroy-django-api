@@ -4,9 +4,12 @@ from . import views
 from customer import views as customer_views
 from product import views as product_views
 from django.conf.urls import url
+from rest_framework.documentation import include_docs_urls
 
 
-
+# from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
+schema_view = get_swagger_view(title='Pastebin API')
 router=DefaultRouter()
 
 router.register('job', views.JobViewset)
@@ -27,4 +30,5 @@ router.register('product-stock-info',product_views.ProductStockInfo)
 urlpatterns = [
     path('',include(router.urls)),
     path('login/',views.UserLoginApiView.as_view()),
+    path(r'docs/', include_docs_urls(title='Polls API')),
 ]
