@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 from customer import views as customer_views
 from product import views as product_views
+from user_log import views as log_views
 from django.conf.urls import url
 from rest_framework.documentation import include_docs_urls
 
@@ -11,6 +12,7 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title='Pastebin API')
 router=DefaultRouter()
+
 
 router.register('job', views.JobViewset)
 router.register('location', views.LocationViewset)
@@ -26,6 +28,7 @@ router.register('supplier', product_views.SupplierViewset)
 router.register('supply-product', product_views.SupplierSupplyProductViewset)
 router.register('supply-product-edit',product_views.SupplierSupplyProductEditViewset)
 router.register('product-stock-info',product_views.ProductStockInfo)
+router.register('Log', log_views.LogViewset)
 
 urlpatterns = [
     path('',include(router.urls)),
