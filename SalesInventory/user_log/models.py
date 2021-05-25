@@ -18,8 +18,14 @@ class Log(models.Model):
         verbose_name = ("Log")
         verbose_name_plural = ("Logs")
 
+        permissions = [
+            ("can_search", "Can search the web"),
+        ]
+
     def __str__(self):
         return self.request_username
+
+    
 
     # def get_absolute_url(self):
     #     return reverse("Log_detail", kwargs={"pk": self.pk})

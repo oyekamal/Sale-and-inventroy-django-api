@@ -15,7 +15,7 @@ def my_middleware(get_response):
             print(request_d)
         except Exception as e:
             request_d = {}
-            print(e)
+            print("Exception ",e)
             pass
     
         response = get_response(request)
@@ -31,12 +31,12 @@ def my_middleware(get_response):
             # print("user ", request.user.id)
             try:
                 print("ype")
-                print(response.content)
+                # print(response.content)
                 # print(json.loads(response))
                 
                 response_d = json.loads(response.content)
-                print("\n ====== \n")
-                print(response_d)
+                # print("\n ====== \n")
+                # print(response_d)
                 Log.objects.create(request_username=str(request.user), request_method=request.method, request_url= request.get_full_path(), request_data= request_d, response_data= response_d ).save()
 
             except Exception as e:
