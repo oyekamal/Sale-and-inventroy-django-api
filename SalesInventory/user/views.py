@@ -5,7 +5,8 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required,permission_required,user_passes_test
 
 class LocationViewset(viewsets.ModelViewSet):
     """handle location CRUD"""
@@ -44,6 +45,33 @@ class UserLoginApiView(ObtainAuthToken):
     """handl creating user authentication tokens"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
     
+
+class permission(APIView):
+
+
+    # permission_classes=[AllowAny,]
+    permission_classes=[IsAuthenticated,]
+    # @permission_required('user.close_task')
+
+    # def user_of_stores(user):
+    #     if user.is_authenticated() and user.has_perm("user.close_task"):
+    #         return True
+    #     else:
+    #         return False
+
+    # # Method check using method
+    # @user_passes_test(user_of_stores)
+
+    # @permission_required('user_log.Log.can_search')
+    def get(self, request):
+        print(request.user.get_all_permissions())
+        print(request.user.has_perm("user_log.can_search"))
+        # @permission_required("user_log.can_search")
+        # def check(request ):
+        #     return Response("it hase the permission")
+
+        return Response("yes its working")
+        
     
 class JobViewset(viewsets.ViewSet):
     """below code handle admin creating job and listing"""
