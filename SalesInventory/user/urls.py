@@ -9,7 +9,9 @@ from rest_framework.documentation import include_docs_urls
 
 # from django.conf.urls import url
 from rest_framework_swagger.views import get_swagger_view
-schema_view = get_swagger_view(title='Pastebin API')
+schema_view = get_swagger_view(title='Polls API')
+
+
 router=DefaultRouter()
 
 router.register('job', views.JobViewset)
@@ -31,4 +33,5 @@ urlpatterns = [
     path('',include(router.urls)),
     path('login/',views.UserLoginApiView.as_view()),
     path(r'docs/', include_docs_urls(title='Polls API')),
+    path(r'swagger-docs/', schema_view),
 ]
