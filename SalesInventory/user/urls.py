@@ -38,8 +38,9 @@ router.register('Log', log_views.LogViewset)
 
 urlpatterns = [
     path('',include(router.urls)),
-    path('login/',views.UserLoginApiView.as_view()),
+    path('login/',views.LoginView.as_view()),
     path(r'docs/', include_docs_urls(title='Polls API')),
     path(r'swagger-docs/', schema_view),
-    path('permission/',views.permission.as_view())
+    path('permission/',views.permission.as_view()),
+    path('signin/', views.signin),
 ]

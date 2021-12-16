@@ -143,7 +143,7 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'user.User'
 
-
+TOKEN_EXPIRED_AFTER_SECONDS = 10
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
